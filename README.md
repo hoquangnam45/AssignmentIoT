@@ -6,8 +6,8 @@ Mô tả :
 + Khi shipper giao hàng thì người sử dụng tủ sẽ có thể yêu cầu sinh One-time-password để cho phép shipper có thể mở tủ giao hàng
 
 Video tham khảo cách hoạt động: 
-+https://www.youtube.com/watch?v=PgmNd5A9yro
-+https://www.youtube.com/watch?v=YrVJpChzLbk
++ https://www.youtube.com/watch?v=PgmNd5A9yro
++ https://www.youtube.com/watch?v=YrVJpChzLbk
 
 Phân chia công việc:
 + Quân: Mở khóa tủ và + làm bàn phím
