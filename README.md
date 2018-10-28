@@ -22,10 +22,11 @@ Video: https://www.youtube.com/watch?v=wZbFyvaQC6k&fbclid=IwAR26ngyIOuXrkIme8JqB
 
 Mô tả chung: Hệ thống thuộc về đơn vị vận chuyển (ship hàng), đơn vị sẽ đặt tại mỗi chung cư một cái tủ(phân biệt tủ với hộc tủ)  
 
-- Phần ứng dụng android cho shipper:  
-+ Khi cần giao hàng, shipper đăng nhập ứng dụng bằng Account và Password.  
-+ Server kiểm tra tính hợp lệ của Account và Password, trả về đăng nhập Success hoặc Fail.  
+1. Phần ứng dụng android cho shipper:  
+    - Khi cần giao hàng, shipper đăng nhập ứng dụng bằng Account và Password.  
+    - Server kiểm tra tính hợp lệ của Account và Password, trả về đăng nhập Success hoặc Fail.  
 1) Khi thành công, server gửi về code 0, ID của shipper và cơ sở dữ liệu về hệ thống tủ:  
+'''
 {  
     "Code": "0",  
     "shipper": {  
@@ -77,11 +78,15 @@ Mô tả chung: Hệ thống thuộc về đơn vị vận chuyển (ship hàng)
         },  
     ]  
 }   
+'''
 _ 2) Khi thất bại, server gửi về code 1:  
+'''
 {  
     "Code": "1"  
 }  
-+ Ứng dụng hiển cơ sở dữ liệu theo cách trực quan nào đó cho shipper, shipper chọn tủ mà anh ta cần giao hàng tới, danh sách hộc tủ (còn trống), số điện thoại, địa chỉ email của người nhận tương ứng từng hộc tủ. Một record có dạng như sau:  
+'''
+    - Ứng dụng hiển cơ sở dữ liệu theo cách trực quan nào đó cho shipper, shipper chọn tủ mà anh ta cần giao hàng tới, danh sách hộc tủ (còn trống), số điện thoại, địa chỉ email của người nhận tương ứng từng hộc tủ. Một record có dạng như sau:  
+'''
 {  
     "shipperId": "111222",  
     "dresser": "A5555",  
@@ -98,19 +103,25 @@ _ 2) Khi thất bại, server gửi về code 1:
         },  
     ]  
 }  
-+ Server nhận thông tin và làm 2 việc  
+'''
+    - Server nhận thông tin và làm 2 việc  
 _ 1) Sinh mã OTP(one time password) cho shipper, lưu vào cơ sở dữ liệu record:  
+'''
 {  
     "OTP": "11223344",  
     "shipperId": "111222",  
     "dresserId": "A5555",  
     "drawers": ["1","2"]  
 }  
+'''
 sau đó gửi cho ứng dụng OTP vừa sinh ra.  
+'''
 {  
     "OTP": "11223344"  
 }  
+'''
 _ 2) Sinh ID, mã OTP cho từng người nhận hàng và lưu vào database:  
+'''
 {  
     "receiverEmail": "truongson@gmail.com",  
     "receiverPhone": "0961111111",  
@@ -118,7 +129,9 @@ _ 2) Sinh ID, mã OTP cho từng người nhận hàng và lưu vào database:
     "OTP": "66778899",  
     "drawers": ["1"]  
 }  
-và    
+'''
+và  
+'''  
 {  
     "receiverEmail": "trungkien@gmail.com",  
     "receiverPhone": "0962222222",  
@@ -126,53 +139,69 @@ và
     "OTP": "33557799",  
     "drawers": ["2"]  
 }  
-  
-- Phần ứng dụng của tủ: tủ sẽ luôn hiển thì hai lựa chọn là "Send" và "Pick-up".  
-+ Shipper chọn "Send", ứng dụng sẽ yêu cầu nhập ID, OTP. Sau khi nhận ID, OTP ứng dụng sẽ gửi dữ liệu lên server  
+'''
+2. Phần ứng dụng của tủ: tủ sẽ luôn hiển thì hai lựa chọn là "Send" và "Pick-up".  
+- Shipper chọn "Send", ứng dụng sẽ yêu cầu nhập ID, OTP. Sau khi nhận ID, OTP ứng dụng sẽ gửi dữ liệu lên server  
+'''
 {  
     "OTP": "11223344",  
     "shipperId": "111222",  
     "dresserId": "A5555"  
 }  
+'''
 server sẽ kiểm tra:  
 _ 1) Thành công, server gửi về danh sách tủ đã cấp  
+'''
 {  
     "code": "0",  
     "drawers": ["1", "2"]  
 }  
+'''
 _ 2) Thất bại, server gửi về   
+'''
 {  
     "code": "-1"  
 }  
+'''
 khi thành công, tủ tự động mở những hộc tủ như đã cấp. Ứng dụng chuyển sang màn hình yêu cầu shipper xác nhận đã bỏ hàng vào rồi. Sau khi shipper xác nhận, tủ sẽ gửi ID tủ, OTP lên server  
+'''
 {  
     "OTP": "11223344",  
     "dresserId": "A5555"  
 }  
+'''
 yêu cầu đồng bộ, server sẽ chuyển các hộc tủ sang trạng thái hiện đang chứa hàng; đồng thời server sẽ gửi thông tin đã có hàng qua email, tin nhắn cho người nhận. Tủ chuyển sang màn hình chờ.  
 
-+ Người nhận hàng chọn "Pick-up", ứng dụng yêu cầu nhập ID người nhận, OTP. Ứng dụng gửi thông tin này lên server  
+- Người nhận hàng chọn "Pick-up", ứng dụng yêu cầu nhập ID người nhận, OTP. Ứng dụng gửi thông tin này lên server 
+''' 
 {  
     "OTP": "66778899",  
     "receiverId": "222333",  
     "dresserId": "A5555"  
 }  
+'''
 server sẽ kiểm tra:  
 _ 1) Thành công: server gửi về danh sách hộc tủ  
+'''
 {  
     "code": "0",  
     "drawers": ["2"]  
 }  
+'''
 tủ sẽ tự động mở những hộc tủ này.  
 _ 2) Thất bại, server gửi về mã 0  
+'''
 {  
     "code": "-1"  
 }  
+'''
 khi thành công, tủ tự động mở những hộc tủ như đã cấp. Ứng dụng chuyển sang màn hình yêu cầu người nhận xác nhận đã lấy hàng. Sau khi shipper xác nhận, tủ sẽ gửi ID tủ, OTP lên server  
+'''
 {  
     "OTP": "66778899",  
     "dresserId": "A5555"  
 }  
+'''
 yêu cầu đồng bộ, server sẽ chuyển các hộc tủ sang trạng thái trống. Tủ chuyển sang màn hình chờ.  
 
 
