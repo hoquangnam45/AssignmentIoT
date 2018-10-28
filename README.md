@@ -23,9 +23,9 @@ Video: https://www.youtube.com/watch?v=wZbFyvaQC6k&fbclid=IwAR26ngyIOuXrkIme8JqB
 Mô tả chung: Hệ thống thuộc về đơn vị vận chuyển (ship hàng), đơn vị sẽ đặt tại mỗi chung cư một cái tủ(phân biệt tủ với hộc tủ)  
 
 1. Phần ứng dụng android cho shipper:  
-    - Khi cần giao hàng, shipper đăng nhập ứng dụng bằng Account và Password.  
-    - Server kiểm tra tính hợp lệ của Account và Password, trả về đăng nhập Success hoặc Fail.  
-1) Khi thành công, server gửi về code 0, ID của shipper và cơ sở dữ liệu về hệ thống tủ:  
+- Khi cần giao hàng, shipper đăng nhập ứng dụng bằng Account và Password.  
+- Server kiểm tra tính hợp lệ của Account và Password, trả về đăng nhập Success hoặc Fail.  
+_ 1) Khi thành công, server gửi về code 0, ID của shipper và cơ sở dữ liệu về hệ thống tủ:  
 ```
 {  
     "Code": "0",  
@@ -85,7 +85,7 @@ _ 2) Khi thất bại, server gửi về code 1:
     "Code": "1"  
 }  
 ```
-    - Ứng dụng hiển cơ sở dữ liệu theo cách trực quan nào đó cho shipper, shipper chọn tủ mà anh ta cần giao hàng tới, danh sách hộc tủ (còn trống), số điện thoại, địa chỉ email của người nhận tương ứng từng hộc tủ. Một record có dạng như sau:  
+- Ứng dụng hiển cơ sở dữ liệu theo cách trực quan nào đó cho shipper, shipper chọn tủ mà anh ta cần giao hàng tới, danh sách hộc tủ (còn trống), số điện thoại, địa chỉ email của người nhận tương ứng từng hộc tủ. Một record có dạng như sau:  
 ```
 {  
     "shipperId": "111222",  
@@ -104,8 +104,8 @@ _ 2) Khi thất bại, server gửi về code 1:
     ]  
 }  
 ```
-    - Server nhận thông tin và làm 2 việc  
-_ 1) Sinh mã OTP(one time password) cho shipper, lưu vào cơ sở dữ liệu record:  
+- Server nhận thông tin và làm 2 việc  
+    - Sinh mã OTP(one time password) cho shipper, lưu vào cơ sở dữ liệu record:  
 ```
 {  
     "OTP": "11223344",  
@@ -120,7 +120,8 @@ sau đó gửi cho ứng dụng OTP vừa sinh ra.
     "OTP": "11223344"  
 }  
 ```
-_ 2) Sinh ID, mã OTP cho từng người nhận hàng và lưu vào database:  
+- 
+    - Sinh ID, mã OTP cho từng người nhận hàng và lưu vào database:  
 ```
 {  
     "receiverEmail": "truongson@gmail.com",  
