@@ -25,7 +25,7 @@ Mô tả chung: Hệ thống thuộc về đơn vị vận chuyển (ship hàng)
 #### Phần ứng dụng android cho shipper:  
 - Khi cần giao hàng, shipper đăng nhập ứng dụng bằng Account và Password.  
 - Server kiểm tra tính hợp lệ của Account và Password, trả về đăng nhập Success hoặc Fail.  
-_ 1) Khi thành công, server gửi về code 0, ID của shipper và cơ sở dữ liệu về hệ thống tủ:  
+1. Khi thành công, server gửi về code 0, ID của shipper và cơ sở dữ liệu về hệ thống tủ:  
 ```
 {  
     "Code": "0",  
@@ -79,7 +79,7 @@ _ 1) Khi thành công, server gửi về code 0, ID của shipper và cơ sở d
     ]  
 }   
 ```
-_ 2) Khi thất bại, server gửi về code 1:  
+2. Khi thất bại, server gửi về code 1:  
 ```
 {  
     "Code": "1"  
@@ -105,7 +105,7 @@ _ 2) Khi thất bại, server gửi về code 1:
 }  
 ```
 - Server nhận thông tin và làm 2 việc  
-    - Sinh mã OTP(one time password) cho shipper, lưu vào cơ sở dữ liệu record:  
+1. Sinh mã OTP(one time password) cho shipper, lưu vào cơ sở dữ liệu record:  
 ```
 {  
     "OTP": "11223344",  
@@ -120,8 +120,7 @@ sau đó gửi cho ứng dụng OTP vừa sinh ra.
     "OTP": "11223344"  
 }  
 ```
-- 
-    - Sinh ID, mã OTP cho từng người nhận hàng và lưu vào database:  
+1. Sinh ID, mã OTP cho từng người nhận hàng và lưu vào database:  
 ```
 {  
     "receiverEmail": "truongson@gmail.com",  
@@ -151,14 +150,14 @@ và
 }  
 ```
 server sẽ kiểm tra:  
-_ 1) Thành công, server gửi về danh sách tủ đã cấp  
+1. Thành công, server gửi về danh sách tủ đã cấp  
 ```
 {  
     "code": "0",  
     "drawers": ["1", "2"]  
 }  
 ```
-_ 2) Thất bại, server gửi về   
+2. Thất bại, server gửi về   
 ```
 {  
     "code": "-1"  
@@ -182,7 +181,7 @@ yêu cầu đồng bộ, server sẽ chuyển các hộc tủ sang trạng thái
 }  
 ```
 server sẽ kiểm tra:  
-_ 1) Thành công: server gửi về danh sách hộc tủ  
+1. Thành công: server gửi về danh sách hộc tủ  
 ```
 {  
     "code": "0",  
@@ -190,7 +189,7 @@ _ 1) Thành công: server gửi về danh sách hộc tủ
 }  
 ```
 tủ sẽ tự động mở những hộc tủ này.  
-_ 2) Thất bại, server gửi về mã 0  
+2. Thất bại, server gửi về mã 0  
 ```
 {  
     "code": "-1"  
