@@ -22,7 +22,7 @@ Video: https://www.youtube.com/watch?v=wZbFyvaQC6k&fbclid=IwAR26ngyIOuXrkIme8JqB
 
 Mô tả chung: Hệ thống thuộc về đơn vị vận chuyển (ship hàng), đơn vị sẽ đặt tại mỗi chung cư một cái tủ(phân biệt tủ với hộc tủ)  
 
-1. Phần ứng dụng android cho shipper:  
+#### Phần ứng dụng android cho shipper:  
 - Khi cần giao hàng, shipper đăng nhập ứng dụng bằng Account và Password.  
 - Server kiểm tra tính hợp lệ của Account và Password, trả về đăng nhập Success hoặc Fail.  
 _ 1) Khi thành công, server gửi về code 0, ID của shipper và cơ sở dữ liệu về hệ thống tủ:  
@@ -141,7 +141,7 @@ và
     "drawers": ["2"]  
 }  
 ```
-2. Phần ứng dụng của tủ: tủ sẽ luôn hiển thì hai lựa chọn là "Send" và "Pick-up".  
+#### Phần ứng dụng của tủ: tủ sẽ luôn hiển thì hai lựa chọn là "Send" và "Pick-up".  
 - Shipper chọn "Send", ứng dụng sẽ yêu cầu nhập ID, OTP. Sau khi nhận ID, OTP ứng dụng sẽ gửi dữ liệu lên server  
 ```
 {  
