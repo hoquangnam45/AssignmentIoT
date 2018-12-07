@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tủ khóa A558</string>
+    <string name="send_package_btn">Gửi hàng</string>
+    <string name="get_package_btn">Nhận hàng</string>
+    <string name="return_package_btn">Trả hàng</string>
+    <string name="overview_btn">Tổng quan</string>
+    <string name="title_activity_send_parcel">SendParcelActivity</string>
+    <string name="title_activity_pickup">PickupActivity</string>
+</resources>

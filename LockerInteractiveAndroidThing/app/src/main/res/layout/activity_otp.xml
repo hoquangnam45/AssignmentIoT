@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/OTPCodeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="Xin vui lòng nhập mã OTP"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/IDInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ems="10"
+        android:hint="ID placeholder"
+        android:inputType="textPersonName"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right">
+
+        <Button
+            android:id="@+id/send_OTP_request"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Gửi yêu cầu" />
+
+    </LinearLayout>
+
+</LinearLayout>
